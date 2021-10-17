@@ -1,0 +1,10 @@
+<div class="col-12 float-start p-0">
+
+  <div class="float-start p-0">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="float-start" [ngClass]="service.toggleMenu ? 'expand': 'shift'">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>

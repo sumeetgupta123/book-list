@@ -1,0 +1,23 @@
+<div class="col-12 float-start sidenav " [ngClass]="service.toggleMenu ? 'shrink':''">
+    <button (click)="toggle()" id="menuItm" [attr.aria-expanded]="!service.toggleMenu" aria-labelledby="menuItm"
+    [matTooltipDisabled]="!service.toggleMenu " matTooltip="Menu" matTooltipPosition="right">
+        <img src="../../../assets/icon2.PNG" alt="burger menu" class="icons float-start"/>
+        <span class="text float-start">Menu</span>
+    </button>
+    <button [ngClass]="items.showsubmenu  && items.childcontent != null ? 'h-auto pb-20':''" *ngFor="let items of menuitem;let i = index" 
+    attr.aria-label="{{items.name}}" (click)="menuselect(items)" [routerLinkActiveOptions]="{exact: true}" routerLinkActive='active' routerLink="{{items.route}}"
+    [matTooltipDisabled]="!service.toggleMenu " matTooltip="{{items.name}}" matTooltipPosition="right">
+        <img [src]="items.icon" alt="Courses" class="icons float-start"/>
+        <span class="text float-start">{{items.name}}</span>
+        <span *ngIf="items.childcontent != null" [ngClass]="items.showsubmenu ? 'icon-down':'icon-up'"></span>
+        <ng-container *ngIf="items.showsubmenu && items.childcontent != null">
+            <button *ngFor="let list of items.childcontent" attr.aria-label="{{list.name}}" class="mt-20 mb-0"
+            [matTooltipDisabled]="!service.toggleMenu" matTooltip="{{list.name}}" matTooltipPosition="right"
+             (click)="submenu(list,$event)">
+                <img [src]="list.icon" alt="Courses" class="icons float-start"/>
+                <span class="text float-start">{{list.name}}</span>
+                </button>
+        </ng-container>
+    </button>
+
+</div>
