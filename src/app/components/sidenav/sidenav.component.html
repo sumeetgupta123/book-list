@@ -5,7 +5,7 @@
         <span class="text float-start">Menu</span>
     </button>
     <button [ngClass]="items.showsubmenu  && items.childcontent != null ? 'h-auto pb-20':''" *ngFor="let items of menuitem;let i = index" 
-    attr.aria-label="{{items.name}}" (click)="menuselect(items)" [routerLinkActiveOptions]="{exact: true}" routerLinkActive='active' routerLink="{{items.route}}"
+    attr.aria-label="{{items.name}}" (click)="menuselect(items)" role="link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive='active' routerLink="{{items.route}}"
     [matTooltipDisabled]="!service.toggleMenu " matTooltip="{{items.name}}" matTooltipPosition="right">
         <img [src]="items.icon" alt="Courses" class="icons float-start"/>
         <span class="text float-start">{{items.name}}</span>
